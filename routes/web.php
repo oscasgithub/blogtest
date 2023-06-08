@@ -16,13 +16,13 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 
 
-//Route::get('/', HomeController::class);
+Route::get('/', HomeController::class);
 Route::get('home', HomeController::class);
 
 
