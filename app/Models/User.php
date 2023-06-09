@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
+
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -42,4 +46,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    //Mutador y Accesor: Cambia la forma de definición con respecto a versiones anteriores
+    protected function name(): Attribute
+    {
+        /*
+        return new Attribute(
+            get: function($value){
+                return ucwords($value);
+            },
+
+            set: function($value){
+                return strtolower($value);
+            }
+        );*/
+
+        //Equivalente a lo anterior pero con funciones flecha
+        return new Attribute(
+            get: fn($value) => ucwords($value),
+            set: fn($value) => strtolower($value)
+        );
+    }
 }

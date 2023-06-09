@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable(); //No se puede almacenar campo NULL, sino se especifica explicitamente.
             $table->string('password');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             //$table->unsignedTinyInteger('tipodoc');
             //$table->string('NumDoc', 30) ->unique();
             $table->rememberToken();
