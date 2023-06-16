@@ -21,13 +21,14 @@ use App\Http\Controllers\HomeController;
 });*/
 
 
-
+//Forma 1: Forma basica de definir las rutas
 Route::get('/', HomeController::class);
 Route::get('home', HomeController::class);
 
 
+//Forma 2: Grupo de Rutas por Controlador
 /*GRUPO DE RUTAS */
-Route::controller(CursoController::class)->group(function () {
+/*Route::controller(CursoController::class)->group(function () {
     route::get('cursos', 'index')->name("cursos.index");
     route::get('cursos/create', 'create')->name("cursos.create");
     route::get('cursos/{curso}', 'show')->name("cursos.show");
@@ -36,7 +37,18 @@ Route::controller(CursoController::class)->group(function () {
     route::put('cursos/{curso}','update')->name("cursos.update");
     route::delete('cursos/{curso}','destroy')->name("cursos.destroy");
     
-});
+});*/
+
+
+
+//Forma 3
+/* RUTAS POR RECURSO */
+Route::resource('cursos', CursoController::class);
+
+//si despues de haber realizado el desarrollo quisiera cambiar el nombre de las rutas de cursos por asignaturas
+//Solo si necesito sobreescribir el nombre de las rutas por algún cambio posterior
+//Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas'=>'curso'])->names('cursos');
+
 
 
 /*RUTAS CON ESTRUCTURA A PARTIR DE LARAVEL 8
