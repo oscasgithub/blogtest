@@ -28,9 +28,14 @@ Route::get('home', HomeController::class);
 
 /*GRUPO DE RUTAS */
 Route::controller(CursoController::class)->group(function () {
-    route::get('cursos', 'index');
-    route::get('cursos/create', 'create');
-    route::get('cursos/{curso}', 'show');
+    route::get('cursos', 'index')->name("cursos.index");
+    route::get('cursos/create', 'create')->name("cursos.create");
+    route::get('cursos/{curso}', 'show')->name("cursos.show");
+    route::post('cursos','store')->name("cursos.store");
+    route::get('cursos/{curso}/edit', 'edit')->name("cursos.edit");
+    route::put('cursos/{curso}','update')->name("cursos.update");
+    route::delete('cursos/{curso}','destroy')->name("cursos.destroy");
+    
 });
 
 
