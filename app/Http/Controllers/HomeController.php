@@ -17,7 +17,7 @@ class HomeController extends Controller
     //invoke es para que el controldor administre una unica ruta
     public function __invoke()
     {
-        //return view('home');
-        return view('welcome');
+        return view('home');
+        //return view('welcome');
     }
 }

@@ -3,6 +3,9 @@
 use App\Http\Controllers\CursoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactanosController;
+
+
 
 
 /*
@@ -22,8 +25,8 @@ use App\Http\Controllers\HomeController;
 
 
 //Forma 1: Forma basica de definir las rutas
-Route::get('/', HomeController::class);
-Route::get('home', HomeController::class);
+/*Route::get('/', HomeController::class);
+Route::get('home', HomeController::class);*/
 
 
 //Forma 2: Grupo de Rutas por Controlador
@@ -43,12 +46,16 @@ Route::get('home', HomeController::class);
 
 //Forma 3
 /* RUTAS POR RECURSO */
-Route::resource('cursos', CursoController::class);
+//Route::resource('cursos', CursoController::class);
 
 //si despues de haber realizado el desarrollo quisiera cambiar el nombre de las rutas de cursos por asignaturas
 //Solo si necesito sobreescribir el nombre de las rutas por algún cambio posterior
 //Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas'=>'curso'])->names('cursos');
 
+
+//Forma 4
+/* RUTAS VIEW: Solo para mostrar contenido estático*/
+//Route::view('nosotros','nosotros')->name('nosotros');
 
 
 /*RUTAS CON ESTRUCTURA A PARTIR DE LARAVEL 8
@@ -59,6 +66,18 @@ route::get('cursos', [CursoController::class, 'index']);
 route::get('cursos/{curso}', [CursoController::class, 'show']);
 route::get('cursos/create', [CursoController::class, 'create']);
 */
+
+
+//Route::get('/', HomeController::class) ->name('root');
+Route::get('home', HomeController::class)->name('home');
+
+Route::resource('cursos', CursoController::class);
+
+Route::view('nosotros','nosotros')->name('nosotros');
+
+//Route::get('contactanos', HomeController::class)->name('contactenos');
+Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
 
 
 
