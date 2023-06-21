@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
             'create' => 'crear',
             'edit' => 'editar',
         ]);
+
+        //Para que la paginación trabaje con Bootstrap
+        //Paginator::useBootstrap();
     }
 }
