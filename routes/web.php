@@ -28,4 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('prueba', function () {
+    return 'Has accedido correctamente a esta ruta';
+})->middleware(['auth', 'verified', 'age'])->name('prueba');
+
+Route::get('no-autorizado', function () {
+    return 'Acceso no autorizado';
+})->name('no-autorizado');
+
+
 require __DIR__.'/auth.php';
